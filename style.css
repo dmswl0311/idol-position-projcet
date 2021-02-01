@@ -10,21 +10,23 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'UhBeenamsoyoung';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeenamsoyoung.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
 .navbar {
     margin: 0 0 55px;
     padding: 16px 17px 12px 15px;
     background-color: #ebebeb;
   }
-body {
-  font-family: sans-serif;
-  background-color: #eeeeee;
-}
 
 .file-upload {
-  background-color: #ffffff;
-  width: 630px;
+  width: 80%;
   margin: 0 auto;
   padding: 10px;
+  background-color: #fafafa;
 }
 
 .file-upload-btn {
@@ -72,14 +74,17 @@ body {
 
 .image-upload-wrap {
   margin-top: 20px;
-  border: 4px dashed #04A9DB;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: 4px dashed#FCC302;
   position: relative;
 }
 
 .image-dropping,
 .image-upload-wrap:hover {
   background-color: #ffffff;
-  border: 4px dashed #04A9DB;
+  border: 4px dashed #FCC302;
 }
 
 .image-title-wrap {
@@ -109,11 +114,11 @@ body {
   width: 200px;
   margin: 0;
   color: #fff;
-  background: #04A9DB;
+  background: #fdcd2f;
   border: none;
   padding: 10px;
   border-radius: 4px;
-  border-bottom: 4px solid  #048eb8;
+  border-bottom: 4px solid  #f8c417;
   transition: all .2s ease;
   outline: none;
   text-transform: uppercase;
@@ -121,7 +126,7 @@ body {
 }
 
 .remove-image:hover {
-  background:  #05b9f0;
+  background:  #fdc611;
   color: #ffffff;
   transition: all .2s ease;
   cursor: pointer;

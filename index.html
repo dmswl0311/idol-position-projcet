@@ -35,6 +35,13 @@
             </div>
         </div>
     </nav>
+
+    <!-- 메인 제목 -->
+    <section style="text-align: center; margin-bottom: 5%; font-family: 'UhBeenamsoyoung';">
+        <h1>아이돌 포지션 테스트</h1>
+        <h5 style="margin-top: 2%;">만약 내가 머시기라면❓</h5>
+    </section>
+
     <!-- 파일업로드 -->
     <section>
         <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -42,13 +49,16 @@
             <div class="image-upload-wrap">
                 <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
                 <div class="drag-text" style="font-family: 'BBTreeGR';">
-                    <h3>이미지를 업로드해주세요! <p style="font-size: small;">업로드한 이미지는 절대 저장되지 않습니다.</p>
+                    <h3>
+                        <p style=" margin-bottom: 4%;">📥</p> 이미지를 업로드해주세요<p style="font-size: small; margin-top:2%;">
+                            업로드한 이미지는 절대 저장되지
+                            않습니다.</p>
                     </h3>
                 </div>
             </div>
             <div class="file-upload-content">
                 <img class="file-upload-image" id="face-image" src="#" alt="your image" />
-                <p class="result-message"></p>
+                <p class="result-message" style="font-family:'BBTreeGR';"></p>
                 <div id="label-container"></div>
                 <br>
                 <div class="image-title-wrap">
@@ -98,23 +108,23 @@
             var resultMessage, explain;
             switch (prediction[0].className) {
                 case "vocal":
-                    resultMessage = "메인보컬";
+                    resultMessage = "🎤 메인보컬";
                     explain = "메인보컬담당임";
                     break;
                 case "rap":
-                    resultMessage = "랩";
+                    resultMessage = "🤨 랩";
                     explain = "랩담당임";
                     break;
                 case "visual":
-                    resultMessage = "비주얼";
+                    resultMessage = "⭐ 비주얼";
                     explain = "비주얼담당임";
                     break;
                 case "enter":
-                    resultMessage = "입덕";
+                    resultMessage = "😍 입덕";
                     explain = "입덕담당임";
                     break;
                 case "dance":
-                    resultMessage = "댄스";
+                    resultMessage = "💃 댄스";
                     explain = "댄스담당임";
                     break;
                 default:
