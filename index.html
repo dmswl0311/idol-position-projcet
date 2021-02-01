@@ -27,9 +27,8 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
                             href="https://github.com/dmswl0311/idol-position-projcet" target="_blank"
-                            style="font-family: 'Bazzi';"><img
-                                src="https://www.flaticon.com/svg/vstatic/svg/25/25231.svg?token=exp=1612168060~hmac=dfbfd238f33a2cf90453d61219bce9dd"
-                                alt="" width="20" height="auto"> Github</a>
+                            style="font-family: 'Bazzi';"><img src="img/github.svg" alt="" width="30" height="auto">
+                            Github</a>
                     </li>
                 </ul>
             </div>
@@ -50,7 +49,9 @@
                 <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
                 <div class="drag-text" style="font-family: 'BBTreeGR';">
                     <h3>
-                        <p style=" margin-bottom: 4%;">📥</p> 이미지를 업로드해주세요<p style="font-size: small; margin-top:2%;">
+                        <p style=" margin-bottom: 4%;">📥</p>
+                        <p><span class="half-highlight">이미지를 업로드해주세요</span></p>
+                        <p style="font-size: small; margin-top:2%;">
                             업로드한 이미지는 절대 저장되지
                             않습니다.</p>
                     </h3>
@@ -58,7 +59,7 @@
             </div>
             <div class="file-upload-content">
                 <img class="file-upload-image" id="face-image" src="#" alt="your image" />
-                <p class="result-message" style="font-family:'BBTreeGR';"></p>
+                <p class="result-message" style="font-family: 'Bazzi'; font-size: xx-large;"></p>
                 <div id="label-container"></div>
                 <br>
                 <div class="image-title-wrap">
@@ -108,34 +109,65 @@
             var resultMessage, explain;
             switch (prediction[0].className) {
                 case "vocal":
-                    resultMessage = "🎤 메인보컬";
-                    explain = "메인보컬담당임";
+                    resultMessage = "메인보컬";
+                    explain = "메인보컬담당";
                     break;
                 case "rap":
-                    resultMessage = "🤨 랩";
-                    explain = "랩담당임";
+                    resultMessage = "랩";
+                    explain = "랩";
                     break;
                 case "visual":
-                    resultMessage = "⭐ 비주얼";
-                    explain = "비주얼담당임";
+                    resultMessage = "비주얼";
+                    explain = "비주얼";
                     break;
                 case "enter":
-                    resultMessage = "😍 입덕";
-                    explain = "입덕담당임";
+                    resultMessage = "입덕";
+                    explain = "입덕";
                     break;
                 case "dance":
-                    resultMessage = "💃 댄스";
-                    explain = "댄스담당임";
+                    resultMessage = "댄스";
+                    explain = "댄스";
                     break;
                 default:
-                    resultMessage = "몰라";
-                    explain = "몰라";
+                    resultMessage = "알 수 없음";
+                    explain = "알 수 없음";
             }
-            $('.result-message').html(resultMessage);
+            $('.result-message').html("<p style='margin-bottom:1%;'>" + '🌟' + resultMessage + '🌟' + "<p style='font-size: large;'>" + '당신은 ' + explain + '담당!' + '</p>' + '</p>');
+            var barWidth;
             for (let i = 0; i < maxPredictions; i++) {
-                const classPrediction =
-                    prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-                labelContainer.childNodes[i].innerHTML = classPrediction;
+                var r;
+                if (prediction[i].probability.toFixed(2) > 0.1) {
+                    barWidth = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+                }
+                else if (prediction[i].probability.toFixed(2) >= 0.01) {
+                    barWidth = "4%"
+                }
+                else {
+                    barWidth = "2%"
+                }
+                var labelTitle;
+                switch (prediction[i].className) {
+                    case "vocal":
+                        labelTitle = "🎤메인보컬";
+                        break;
+                    case "rap":
+                        labelTitle = "🤨랩";
+                        break;
+                    case "visual":
+                        labelTitle = "⭐비주얼";
+                        break;
+                    case "enter":
+                        labelTitle = "😍입덕";
+                        break;
+                    case "dance":
+                        labelTitle = "💃댄스";
+                        break;
+                    default:
+                        labelTitle = "알 수 없음";
+                }
+                var label = "<div class='idol-label d-flex align-items-center' style='font-size: medium;'>" + labelTitle + "</div>"
+                var bar = "<div class='bar-container position-relative container'><div class='" + prediction[i].className + "-box'></div><div class='d-flex justify-content-center align-items-center " + prediction[i].className + "-bar' style='width: " + barWidth + "'><span class='d-block percent-text'>" + Math.round(prediction[i].probability.toFixed(2) * 100) + "%</span></div></div>"
+                labelContainer.childNodes[i].innerHTML = label + bar;
             }
         }
     </script>
