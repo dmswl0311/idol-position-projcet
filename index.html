@@ -53,7 +53,7 @@
     <!-- 토글 버튼 -->
     <section style="margin-top: 3rem; ">
         <div class="button r" id="button-1">
-            <input type="checkbox" class="checkbox">
+            <input type="checkbox" class="checkbox" id="gender">
             <div class="knobs"></div>
             <div class="layer"></div>
         </div>
@@ -135,12 +135,18 @@
         // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
         // the link to your model provided by Teachable Machine export panel
-        const URL = "https://teachablemachine.withgoogle.com/models/dqPcfVDdE/";
-
+        const urlMale = "https://teachablemachine.withgoogle.com/models/dqPcfVDdE/";
+        const urlFemale = "https://teachablemachine.withgoogle.com/models/DreZuIZLz/"
         let model, webcam, labelContainer, maxPredictions;
 
         // Load the image model and setup the webcam
         async function init() {
+            if (document.getElementById('gender').checked) {
+                URL = urlFemale;
+            }
+            else {
+                URL = urlMale;
+            }
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
 
@@ -165,31 +171,57 @@
             const prediction = await model.predict(image, false);
             prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
             var resultMessage, explain;
-            switch (prediction[0].className) {
-                case "vocal":
-                    resultMessage = "메인보컬";
-                    explain = "메인보컬";
-                    break;
-                case "rap":
-                    resultMessage = "랩";
-                    explain = "랩";
-                    break;
-                case "visual":
-                    resultMessage = "비주얼";
-                    explain = "비주얼";
-                    break;
-                case "enter":
-                    resultMessage = "입덕";
-                    explain = "입덕";
-                    break;
-                case "dance":
-                    resultMessage = "댄스";
-                    explain = "댄스";
-                    break;
-                default:
-                    resultMessage = "알 수없음";
-                    explain = "알 수없음";
+            if (document.getElementById('gender').checked) {
+                switch (prediction[0].className) {
+                    case "vocal":
+                        resultMessage = "메인보컬";
+                        explain = "메인보컬";
+                        break;
+                    case "visual":
+                        resultMessage = "비주얼";
+                        explain = "비주얼";
+                        break;
+                    case "enter":
+                        resultMessage = "입덕";
+                        explain = "입덕";
+                        break;
+                    case "dance":
+                        resultMessage = "댄스";
+                        explain = "댄스";
+                        break;
+                    default:
+                        resultMessage = "알 수없음";
+                        explain = "알 수없음";
+                }
             }
+            else {
+                switch (prediction[0].className) {
+                    case "vocal":
+                        resultMessage = "메인보컬";
+                        explain = "메인보컬";
+                        break;
+                    case "rap":
+                        resultMessage = "랩";
+                        explain = "랩";
+                        break;
+                    case "visual":
+                        resultMessage = "비주얼";
+                        explain = "비주얼";
+                        break;
+                    case "enter":
+                        resultMessage = "입덕";
+                        explain = "입덕";
+                        break;
+                    case "dance":
+                        resultMessage = "댄스";
+                        explain = "댄스";
+                        break;
+                    default:
+                        resultMessage = "알 수없음";
+                        explain = "알 수없음";
+                }
+            }
+
             $('.result-message').html("<p style='margin-bottom:1%;'>" + '🌟' + resultMessage + '🌟' + "<p style='font-size: large;'>" + '당신은 ' + explain + '담당!' + '</p>' + '</p>');
             var barWidth;
             for (let i = 0; i < maxPredictions; i++) {

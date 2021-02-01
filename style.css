@@ -342,7 +342,7 @@ body
     transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
 }
 
-/* #button-1 .checkbox:checked + .knobs:before
+#button-1 .checkbox:checked + .knobs:before
 {
     content: '여';
     left: 42px;
@@ -357,7 +357,7 @@ body
 #button-1 .knobs, #button-1 .knobs:before, #button-1 .layer
 {
     transition: 0.3s ease all;
-} */
+}
 
 #ytd-url {
   display: block;
