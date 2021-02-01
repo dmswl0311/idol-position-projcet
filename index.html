@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="아이돌 포지션 테스트">
+    <meta property="og:description" content="만약 내가 아이돌이라면 어떤 담당일까?">
+    <link rel="shortcut icon" href="img/favicon.ico" />
     <title>아이돌 포지션 테스트</title>
     <link rel="stylesheet" href="style.css">
     <!-- 부트스트랩 -->
@@ -11,6 +14,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
+    <!-- font awsome -->
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
 
 <body>
@@ -36,13 +41,22 @@
     </nav>
 
     <!-- 메인 제목 -->
-    <section style="text-align: center; margin-bottom: 5%; font-family: 'UhBeenamsoyoung';">
+    <section style="text-align: center; font-family: 'UhBeenamsoyoung';">
         <h1>아이돌 포지션 테스트</h1>
-        <h5 style="margin-top: 2%;">만약 내가 머시기라면❓</h5>
+        <h5 style="margin-top: 2%;">만약 내가 아이돌이라면 어떤 담당일까❓</h5>
+    </section>
+    <!-- 토글 버튼 -->
+    <section style="margin-top: 3rem; ">
+        <div class="button r" id="button-1">
+            <input type="checkbox" class="checkbox">
+            <div class="knobs"></div>
+            <div class="layer"></div>
+        </div>
+        <!-- <a href="https://www.youtube.com/channel/UC7hSS_eujjZOEQrjsda76gA/videos" target="_blank" id="ytd-url">My YouTube Channel</a> -->
     </section>
 
     <!-- 파일업로드 -->
-    <section>
+    <section style="margin-top: 2.5rem;">
         <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <div class="file-upload">
             <div class="image-upload-wrap">
@@ -59,11 +73,25 @@
             </div>
             <div class="file-upload-content">
                 <img class="file-upload-image" id="face-image" src="#" alt="your image" />
+                <!-- LOADING DOTS... -->
+                <div class="loading" style="margin-top: 10%; margin-bottom: 10%;">
+                    <div class="spinner-box">
+                        <div class="pulse-container">
+                            <div class="pulse-bubble pulse-bubble-1"></div>
+                            <div class="pulse-bubble pulse-bubble-2"></div>
+                            <div class="pulse-bubble pulse-bubble-3"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="loading">
+                    <div class="spinner"><i class="fas fa-spinner fa-3x" style="color:rgb(167, 166, 166);"></i></div>
+                </div> -->
                 <p class="result-message" style="font-family: 'Bazzi'; font-size: xx-large;"></p>
                 <div id="label-container"></div>
                 <br>
                 <div class="image-title-wrap">
-                    <button type="button" onclick="removeUpload()" class="remove-image">다른 사진으로 재시도</button>
+                    <button type="button" onclick="window.location.reload()" class="remove-image"><span>다른 사진으로
+                            재시도</span></button>
                 </div>
             </div>
         </div>
@@ -110,7 +138,7 @@
             switch (prediction[0].className) {
                 case "vocal":
                     resultMessage = "메인보컬";
-                    explain = "메인보컬담당";
+                    explain = "메인보컬";
                     break;
                 case "rap":
                     resultMessage = "랩";
@@ -129,8 +157,8 @@
                     explain = "댄스";
                     break;
                 default:
-                    resultMessage = "알 수 없음";
-                    explain = "알 수 없음";
+                    resultMessage = "알 수없음";
+                    explain = "알 수없음";
             }
             $('.result-message').html("<p style='margin-bottom:1%;'>" + '🌟' + resultMessage + '🌟' + "<p style='font-size: large;'>" + '당신은 ' + explain + '담당!' + '</p>' + '</p>');
             var barWidth;
@@ -190,6 +218,7 @@
                 reader.readAsDataURL(input.files[0]);
                 init().then(() => {
                     console.log("hello")
+                    $('.loading').hide();
                     predict();
                 });
             } else {
@@ -210,8 +239,32 @@
         });
 
     </script>
+    <script>
+        $(function () {
+            var checkbox = $('#checkbox'), path = $('#path'), bow = $('#bow'), male = $('#male');
+
+            checkbox.on('change', function () {
+                if ($(this).is(':checked')) {
+                    male.removeClass('ma');
+                    setTimeout(function () { path.addClass('fe'); male.addClass('fe'); bow.addClass('fe'); }, 390);
+                }
+                else {
+                    male.addClass('ma');
+                    setTimeout(function () { path.removeClass('fe'); male.removeClass('fe'); bow.removeClass('fe'); }, 390);
+                }
+            });
+        });
+    </script>
 </body>
 <!-- Copyright (c) 2021 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
+
+<!-- Copyright (c) 2021 by Alex (https://codepen.io/AlexWarnes/pen/jXYYKL)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
