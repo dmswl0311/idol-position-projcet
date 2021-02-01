@@ -503,3 +503,10 @@ body
   width: 320px;
   margin: 0 auto;
 }
+
+/* ㅇㅇㅇ */
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 1pt;
+  font-size: 30pt;
+}

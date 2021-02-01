@@ -47,9 +47,12 @@
     </nav>
 
     <!-- 메인 제목 -->
-    <section style="text-align: center; font-family: 'UhBeenamsoyoung';">
+    <section style="text-align: center; font-family: 'UhBeenamsoyoung';" id="centeralign">
         <h1>아이돌 포지션 테스트</h1>
-        <h5 style="margin-top: 2%;">만약 내가 아이돌이라면 어떤 담당일까❓</h5>
+        <h1>
+            <p style="font-size: medium; margin-top: 1.3rem;">내가 아이돌이라면 어떤 포지션일까❓</p>
+        </h1>
+        <!-- <h1 style="margin-top: 2%;">내가 아이돌이라면 어떤 포지션일까❓</h1> -->
     </section>
     <!-- 토글 버튼 -->
     <section style="margin-top: 3rem; ">
@@ -62,7 +65,7 @@
     </section>
 
     <!-- 파일업로드 -->
-    <section style="margin-top: 2.5rem;">
+    <section style="margin-top: 0.5rem;">
         <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <div class="file-upload">
             <div class="image-upload-wrap">
@@ -318,6 +321,39 @@
             });
         });
     </script>
+    <script>
+        function typeEffect(element, speed) {
+            var text = element.innerHTML;
+            element.innerHTML = "";
+
+            var i = 0;
+            var timer = setInterval(function () {
+                if (i < text.length) {
+                    element.append(text.charAt(i));
+                    i++;
+                } else {
+                    clearInterval(timer);
+                }
+            }, speed);
+        }
+
+
+        // application
+        var speed = 75;
+        var h1 = document.querySelector('h1');
+        var delay = h1.innerHTML.length * speed + speed;
+
+        // type affect to header
+        typeEffect(h1, speed);
+
+
+        // type affect to body
+        setTimeout(function () {
+            p.style.display = "inline-block";
+            typeEffect(p, speed);
+        }, delay);
+
+    </script>
 </body>
 <!-- Copyright (c) 2021 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
 
@@ -336,6 +372,15 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
 
 <!-- Copyright (c) 2021 by Himalaya Singh (https://codepen.io/himalayasingh/pen/EdVzNL)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+ -->
+<!-- Copyright (c) 2021 by Van Huynh (https://codepen.io/worksbyvan/pen/dRBGKK)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
