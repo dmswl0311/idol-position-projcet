@@ -1,0 +1,2 @@
+User-agent: *Allow:/
+Sitemap:https://idolposition.netlify.app/sitemap.xml
